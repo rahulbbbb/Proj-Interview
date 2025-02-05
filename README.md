@@ -13,23 +13,35 @@ Allows users to helps in tracking and managing the appointments for each patient
 ### SideNavigation
 ### Search Bar
 
-![image](https://github.com/user-attachments/assets/ffaf5ed9-ddfb-414d-9a3d-b211ca82d5c6)
 
-### If file exceeds the size limit
-![image](https://github.com/user-attachments/assets/e1b44a23-4fba-4f38-8d09-3f1875119a1d)
 
-### Also add Videos with it
-![image](https://github.com/user-attachments/assets/68214882-ec67-4822-9d7d-aafcead4c8d0)
+![image](https://github.com/user-attachments/assets/1d1e9f97-3a49-465f-a113-08d098441b1a)
 
-### Success message on adding event successfully
-![image](https://github.com/user-attachments/assets/4cf454c1-1184-44f3-aaa5-86655596e43d)
 
-### Responsive Design
-![image](https://github.com/user-attachments/assets/3f138d8d-4fdf-4c42-a268-c705428cb500)
+### Appointment List View with sidebar
+![image](https://github.com/user-attachments/assets/63784469-f113-468f-90cc-01c5a7b1b459)
 
-![image](https://github.com/user-attachments/assets/8921e598-c85c-437e-ac7e-f7228c241176)
 
-![image](https://github.com/user-attachments/assets/f3d98318-d398-4493-9484-d6d4f30d4c8b)
+### Add Patient Form
+![image](https://github.com/user-attachments/assets/68b0ab51-9434-471c-a905-73ed29411c08)
+
+
+### Validations
+![image](https://github.com/user-attachments/assets/9dfee0e0-6a75-4780-8cd4-05203bcf4dd0)
+
+
+### Available Doctors
+![image](https://github.com/user-attachments/assets/cf6ebd07-8183-4d57-93da-af86b786e727)
+
+### session scheduling form
+![image](https://github.com/user-attachments/assets/fad91fb5-765b-4db5-bfae-94ae59000d87)
+
+### Responsive
+![image](https://github.com/user-attachments/assets/fa33d687-3d52-4052-a584-c82a131ca04e)
+
+![image](https://github.com/user-attachments/assets/b59ff6ce-eba4-47ca-83b6-04a64539dbea)
+
+
 
 
 
