@@ -1,37 +1,27 @@
 "use client";
 
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { classNames } from "@/components/Utils";
+import React, { useEffect, useRef, useState } from "react";
 import { Table } from "@/components/Table";
-import data from "./data.json";
 import { usePopper } from "react-popper";
 import { MdCalendarMonth } from "react-icons/md";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { getFilterData, setFilterData } from "@/slices/filterSlice/filterSlice";
-import { ConfirmationModal } from "@/components/CommonComponents/ConfirmationModal";
-import { CalendarIcon, Eye } from "../Icons";
 import AddPatient from "../AddPatient/AddPatient";
 import { useDispatch, useSelector } from "react-redux";
 import DRCard from "@/components/DRCard/page";
-
+import ViewDetail from "../ViewDetail/viewDetail";
 
 const PatientList = () => {
   const [date, setDate] = useState({ startDate: "", endDate: "" });
-
   const [popMenu, setpopMenu] = useState<boolean>(false);
-  const [idData, setIdData] = useState(null);
-  //   const reduxData = useSelector(getFilterData);
+  const [view, setView] = useState<boolean>(false);
   const startDate = date.startDate;
   const endDate = date.endDate;
   const [addPatient, setAddPatient] = useState<boolean>(false);
-  const [editUnitNumber, setEditUnitNumber] = useState<boolean>(false);
   const [patientData, setPatientData] = useState([]);
-  const [filterDataa, setFilterDataa] = useState([]);
   const [rowData, setRowData] = useState({});
   const [scheduled, setScheduled] = useState<boolean>(false);
 
-
-  const reduxData = useSelector(getFilterData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,33 +31,10 @@ const PatientList = () => {
     }
   }, []);
 
-  
-  // const handleFilterApply = ({ data, date }) => {
-  //   // Extract the addPatient name from the filter data passed by the Table component
-  //   const patientNameFilter = data["addPatient Name"]?.toLowerCase() || "";
-    
-  //   // Filter logic
-  //   const filteredData = patientData.filter((addPatient) => {
-  //     const matchesName = patientNameFilter
-  //       ? addPatient.name.toLowerCase().includes(patientNameFilter)
-  //       : true;
-  
-  //       return matchesName;
-  //     });
-      
-  //     // Update filtered data state
-  //     setFilterDataa(filteredData);
-      
-  //     // Optionally sync with Redux
-  //     dispatch(setFilterData({ data, filterData: filteredData }));
-  //   };
-  //   console.log(filterDataa)
-  
-
   const columns = React.useMemo(
     () => [
       {
-        header: "addPatient Name",
+        header: "Patient Name",
         accessorKey: "name",
       },
       {
@@ -85,20 +52,36 @@ const PatientList = () => {
       {
         header: "Address",
         accessorKey: "address",
+        cell: ({ row }) => {
+          const address = row.getValue("address");
+          return (
+            <div
+              className="truncate max-w-[120px] cursor-pointer"
+              title={address} 
+            >
+              {address.length > 10 ? address.slice(0, 10) + "..." : address}
+            </div>
+          );
+        },
       },
+      
       {
         header: "Assigned Doctor",
-        accessorKey: "doctor",
-        cell: ({ getValue }) => getValue() || "-",
-
+        accessorKey: "doctorName",
+        cell: ({ getValue }) => (
+          <span className="text-primary-o-370">{getValue() || "-"}</span>
+        ),
       },
       {
         header: "Date & Time",
         accessorKey: "appointmentDateTime",
-        cell: ({ getValue }) => getValue() || "-",
-     
+        cell: ({ row }) => {
+          return row.original.sessionDate
+            ? `${row.original.sessionDate} ${row.original.sessionTime}`
+            : "-";
+        },
       },
-   
+
       {
         header: "",
         accessorKey: "numberOfPages",
@@ -147,51 +130,58 @@ const PatientList = () => {
             });
 
           return (
-            <div className="flex justify-center items-center gap-6">
-            <div className="w-6 h-6 flex justify-center items-center">
-              {row.original.status === "Pending" && (
-                <div
-                  ref={calendarRef}
-                  className="relative cursor-pointer"
-                  onMouseEnter={() => setCalendarTooltipVisible(true)}
-                  onMouseLeave={() => setCalendarTooltipVisible(false)}
-                >
-                  <MdCalendarMonth style={{ fontSize: "22px" }} onClick={() => {
+            <div className="flex justify-center items-center">
+            {row.original.status === "Pending" ? (
+              <div
+                ref={calendarRef}
+                className="relative cursor-pointer"
+                onMouseEnter={() => setCalendarTooltipVisible(true)}
+                onMouseLeave={() => setCalendarTooltipVisible(false)}
+              >
+                <MdCalendarMonth
+                  style={{ fontSize: "22px" }}
+                  onClick={() => {
                     handleSummary();
                     setScheduled(true);
-                  }} />
-                  {calendarTooltipVisible && (
-                    <div
-                      ref={setCalendarPopperElement}
-                      style={calendarStyles.popper}
-                      {...calendarAttributes.popper}
-                      className="bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg z-20"
-                    >
-                      Schedule
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          
-            <div
-              ref={viewRef}
-              className="relative cursor-pointer"
-              onMouseEnter={() => setViewTooltipVisible(true)}
-              onMouseLeave={() => setViewTooltipVisible(false)}
-            >
-              <MdOutlineRemoveRedEye style={{ fontSize: "22px" }} />
-              {viewTooltipVisible && (
-                <div
-                  ref={setViewPopperElement}
-                  style={editStyles.popper}
-                  {...editAttributes.popper}
-                  className="bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg z-20"
-                >
-                  View
-                </div>
-              )}
-            </div>
+                  }}
+                />
+                {calendarTooltipVisible && (
+                  <div
+                    ref={setCalendarPopperElement}
+                    style={calendarStyles.popper}
+                    {...calendarAttributes.popper}
+                    className="bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg z-20"
+                  >
+                    Schedule
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div
+                ref={viewRef}
+                className="relative cursor-pointer"
+                onMouseEnter={() => setViewTooltipVisible(true)}
+                onMouseLeave={() => setViewTooltipVisible(false)}
+              >
+                <MdOutlineRemoveRedEye
+                  style={{ fontSize: "22px" }}
+                  onClick={() => {
+                    handleSummary();
+                    setView(true);
+                  }}
+                />
+                {viewTooltipVisible && (
+                  <div
+                    ref={setViewPopperElement}
+                    style={editStyles.popper}
+                    {...editAttributes.popper}
+                    className="bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg z-20"
+                  >
+                    View
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           
           );
@@ -239,102 +229,53 @@ const PatientList = () => {
     []
   );
 
-  // const actions = [
-  //   {
-  //     text: "Add Legal Entity Address Mapping ",
-  //     action: () => setAddLegalEntity(true),
-  //   },
-  //   {
-  //     text: "Add Bulk Legal Entity Address Mapping",
-  //     action: () => true,
-  //   },
-  // ];
   const handleAdd = () => {
     setAddPatient(true);
     setpopMenu(true);
   };
 
-    // const filterData = [
-    //   {
-    //     title: "addPatient Name",
-    //     data:
-    //     patientData &&
-    //     patientData?.map((master) => ({
-    //         uniqueId: master.name,
-    //         name: master.name,
-    //       })),
-    //   },
-    //   // {
-    //   //   title: "Floor",
-    //   //   data:
-    //   //     globalFloorData &&
-    //   //     globalFloorData?.data?.globalMasters?.map((master) => ({
-    //   //       uniqueId: master.globalMasterId,
-    //   //       name: master.name,
-    //   //     })),
-    //   // },
-    // ];
-
   return (
     <>
-      {/* <div className="relative"> */}
-        {/* <div className="absolute top-7 left-5 font-medium" style={{fontSize:"22px"}}> 
-          <span>Unit Numbers</span>
-        </div> */}
-        {/* {data && ( */}
-        {scheduled  ? (
-        <DRCard  setScheduled={setScheduled} data={rowData} 
-        />
-      ) : (
-        <Table
-          columns={columns}
-          data={patientData ?? []}
-          isFilter={true}
-          // filterData={filterData}
-          // filterCheckedState={reduxData}
-          // onFilterApply={handleFilterApply}
-          // showDateFilter
-          // showDateFilterName="Added On"
-          dateProps={{ start: startDate, end: endDate }}
-          onFilterReset={() => {
-            setDate({ startDate: "", endDate: "" });
-            dispatch(
-              setFilterData({
-                data: {},
-                filterData: undefined,
-              })
-            );
-          }}
-          isAddNewBtn
-          handleAddNewBtnClick={() => handleAdd()}
-          paginationShow
-          // pagination={data?.meta?.totalCount}
-          // onChangePagePagination={({
-          //   pageNumber,
-          //   selectedPageSize,
-          //   skipPage,
-          // }) => {
-          //   dispatch(
-          //     setSelectedPageSizePagination({
-          //       selectedPageSize: selectedPageSize,
-          //       pageNumber: pageNumber,
-          //       skipPage: skipPage,
-          //     })
-          //   );
-          // }}
-          // onTableDismount={() => {
-          //   dispatch(setSelectedPageSizePagination(initialState));
-          // }}
-          // selectedPagePagination={paginationState}
-          isTitle
-          isTitleName="Appointment List"
+      <div className="relative">
+
+        {scheduled ? (
+          <DRCard
+            setScheduled={setScheduled}
+            data={rowData}
+            setPatientData={setPatientData}
+          />
+        ) : (
+          <Table
+            columns={columns}
+            data={patientData ?? []}
+            isFilter={true}
+            isSearch
+            dateProps={{ start: startDate, end: endDate }}
+            onFilterReset={() => {
+              setDate({ startDate: "", endDate: "" });
+              dispatch(
+                setFilterData({
+                  data: {},
+                  filterData: undefined,
+                })
+              );
+            }}
+            isAddNewBtn
+            handleAddNewBtnClick={() => handleAdd()}
+            paginationShow
+            isTitle
+            isTitleName="Appointment List"
+          />
+        )}
+
+        {view && <ViewDetail data={rowData} onClose={() => setView(false)} />}
+      </div>
+      {addPatient && (
+        <AddPatient
+          hideModal={() => setAddPatient(false)}
+          setPatientData={setPatientData}
         />
       )}
-   
-
-       {addPatient &&
-       <AddPatient hideModal={()=>setAddPatient(false)} setPatientData={setPatientData}/>
-       }
     </>
   );
 };

@@ -221,7 +221,6 @@ function Table({
   showDateFilterName = "Date Range",
   footerTitle,
   showFooter = false,
-  subjectTitle,
   getDeletedRowId = () => {},
   getData,
   isTransferHistory = false,
@@ -229,17 +228,12 @@ function Table({
   handleTransferHistoryClick = () => {},
   isAddNewBtn = false,
   isAddNewBtnName = "",
-  isAddNewBtnIcon = null,
   handleAddNewBtnClick = () => {},
   isAddNewBtnCss = "",
   isCustomTab = false,
   customTabName = "",
-  customTabIcon = null,
   handleCustomTabClick = () => {},
   customTabCss = "",
-  isDeleteTab = false,
-  deleteTabName = "",
-  deleteTabIcon = <></>,
   handleDeleteTabClick = () => {},
   deleteTabCss = "",
   secondaryDateProps,
@@ -247,13 +241,10 @@ function Table({
   showSecondaryFilter = false,
   resetSelection,
   initialLengthOfQuickFilter = 2,
-  isCustomComponent = false,
-  customComponent = <></>,
   isTitle = false,
   isTitleName = "",
   isTitleLeftArrow = false,
   isCardViewBtn = false,
-  currentView = "list",
   handleTitleLeftArrowClick = () => {},
 }: TableI) {
   const [sorting, setSorting] = useState<any>([]);
@@ -353,7 +344,6 @@ function Table({
           (columnsToEdit?.length > 0 && columnsToEdit?.includes(id)) ||
           columnsToEdit == "all"
         ) {
-          // When the input is blurred, we'll call our table meta's updateData function
           const onBlur = () => {
             table.options.meta?.updateData(index, id, value);
 

@@ -1,5 +1,6 @@
 [
   {
+    "id": "84098827-a6a1-46ce-9953-7ba5e0f5e3ad",
     "media": {
       "name": "doctor1.jpg",
       "type": "image/jpeg",
@@ -11,11 +12,12 @@
     "title": "Dr. John Doe",
     "gender": "Male",
     "expertise": "Cardiology",
-    "sessionFee": "$200",
+    "sessionFee": "₹200",
     "sessionMode": "Online",
     "mobileNumber": "+91 9876543210"
   },
   {
+    "id": "871b9325-c51f-4cc2-94fd-e968670d7d4a",
     "media": {
       "name": "doctor2.jpg",
       "type": "image/jpeg",
@@ -27,11 +29,12 @@
     "title": "Dr. Sarah Smith",
     "gender": "Female",
     "expertise": "Dentistry",
-    "sessionFee": "$150",
+    "sessionFee": "₹150",
     "sessionMode": "In-Person",
     "mobileNumber": "+91 8765432109"
   },
   {
+    "id": "5f39683f-4972-47ab-9f8d-4dab9737e86f",
     "media": {
       "name": "doctor3.jpg",
       "type": "image/jpeg",
@@ -43,11 +46,12 @@
     "title": "Dr. James Lee",
     "gender": "Male",
     "expertise": "Neurology",
-    "sessionFee": "$250",
+    "sessionFee": "₹250",
     "sessionMode": "Online",
     "mobileNumber": "+91 9123456789"
   },
   {
+    "id": "c6f745bd-ef23-4060-8449-ef575f915ebc",
     "media": {
       "name": "doctor4.jpg",
       "type": "image/jpeg",
@@ -59,11 +63,12 @@
     "title": "Dr. Emily Clark",
     "gender": "Female",
     "expertise": "Psychology",
-    "sessionFee": "$180",
+    "sessionFee": "₹180",
     "sessionMode": "In-Person",
     "mobileNumber": "+91 9345678901"
   },
   {
+    "id": "63232675-8adf-4659-be84-deb45c13b09d",
     "media": {
       "name": "doctor5.jpg",
       "type": "image/jpeg",
@@ -75,7 +80,7 @@
     "title": "Dr. Rahul Bankoti",
     "gender": "Male",
     "expertise": "Pediatrics",
-    "sessionFee": "$120",
+    "sessionFee": "₹120",
     "sessionMode": "Online",
     "mobileNumber": "+91 9654321098"
   }

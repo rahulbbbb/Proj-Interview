@@ -4,13 +4,10 @@ import * as Yup from "yup";
 import FormBody from "@/components/CommonComponents/FormBody";
 import FormFooter from "@/components/CommonComponents/FormFooter";
 import { RightDrawer } from "../CommonComponents/RightDrawer";
-import Select from "react-select";
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
-import { ChevronUp, ChevronDown } from "lucide-react";
 import AdminSuccess from "../CommonComponents/AdminModal";
 import { ConfirmationModal } from "../CommonComponents/ConfirmationModal";
-// import { ConfirmModal } from "../CommonComponents/ConfirmModal";
 
 
 const validationSchema = Yup.object().shape({
@@ -35,6 +32,8 @@ export default function AddPatient({ hideModal, setPatientData }) {
   const [modal, setModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  
+  
   const formik = useFormik({
     initialValues: {
       mobileNumber: "",
@@ -44,17 +43,27 @@ export default function AddPatient({ hideModal, setPatientData }) {
       description: "",
       name: "",
       sameAsMobile: false,
+      doctorName: "", 
+      sessionTime: "", 
+      sessionDate: "", 
+      sessionMode:"",
+      sessionFee:"",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       const payload = {
-        id: crypto.randomUUID(), 
+        patientId: crypto.randomUUID(),
         mobileNumber: values.mobileNumber,
         wpNumber: values.wpNumber,
         email: values.email,
         name: values?.name,
         address: values?.address,
-        status:"Pending"
+        status: "Pending",
+        doctorName: values.doctorName, 
+        sessionTime: values.sessionTime, 
+        sessionDate: values.sessionDate, 
+        sessionFee: values.sessionFee, 
+        sessionMode: values.sessionMode, 
       };
   
       try {
@@ -69,6 +78,7 @@ export default function AddPatient({ hideModal, setPatientData }) {
   
         setTimeout(() => {
           formik.resetForm();
+          
           hideModal(true);
           setModal(false);
         }, 1500);
@@ -77,8 +87,6 @@ export default function AddPatient({ hideModal, setPatientData }) {
       }
     },
   });
-  
-
   return (
     <div>
       {errorMessage ? (
@@ -154,7 +162,6 @@ export default function AddPatient({ hideModal, setPatientData }) {
                       </div>
                     </div>
 
-                    {/* Checkbox - Positioned ABOVE WhatsApp Field */}
 
                     <div>
                       <label className="text-gray-700 font-medium">
@@ -245,13 +252,13 @@ export default function AddPatient({ hideModal, setPatientData }) {
                   <button
                     type="button"
                     onClick={() => hideModal(true)}
-                    className="inline-flex items-center justify-center transition-all duration-150 ease-linear outline-none bg-gray-o-250 hover:bg-gray-o-150 text-black-b-300 font-medium focus:outline-none text-sm px-6 md:px-9 h-10 py-2 rounded-md border border-gray-p-350"
+                    className="inline-flex items-center justify-center transition-all duration-150 ease-linear outline-none text-pink-500 font-medium focus:outline-none text-sm px-6 md:px-9 h-10 py-2 rounded-md border border-pink-500 hover:bg-pink-500 hover:text-white"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center text-white transition-all duration-150 ease-linear outline-none bg-primary-o-600 hover:bg-primary-o-550 focus:outline-none text-sm px-6 md:px-9 h-10 py-2 rounded-md"
+                    className="inline-flex items-center justify-center text-white transition-all duration-150 ease-linear outline-none bg-gradient-to-r from-purple-500 to-pink-500 focus:outline-none text-sm px-6 md:px-9 h-10 py-2 rounded-md hover:scale-105"
                   >
                     Add
                   </button>
