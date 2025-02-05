@@ -45,7 +45,6 @@ import {
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 import { NoDataFound } from "@/components/CommonComponents/DataNotFound";
-// import { Pagination } from "./Pagination/Pagination";
 import GlobalQuickFilter from "./GlobalQuickFilter";
 import {
   ToolTip,
