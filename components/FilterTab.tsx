@@ -125,7 +125,6 @@ const FilterTab = ({
                   />
                 </div>
               )}
-              {/* filter icon */}
               {isFilter && (
                 <div
                   className="flex justify-center items-center w-9 h-9 p-2 rounded-md bg-[#F7F7FE] hover:bg-blue-o-10 border border-blue-o-10 cursor-pointer transition-all duration-300"
