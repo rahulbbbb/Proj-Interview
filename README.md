@@ -50,6 +50,6 @@ Allows users to helps in tracking and managing the appointments for each patient
 
 
 
-# Deploy on Netlify
+# Deploy on Vercel
 
-[[event-rahull.netlify.app](https://event-rahull.netlify.app/)](https://event-rahull.netlify.app/)
+(https://proj-1-m-ptec.vercel.app/)
