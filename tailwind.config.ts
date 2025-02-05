@@ -106,6 +106,8 @@ module.exports = {
         pvDarkOrange: "#F29339",
         // primary: "#202225",
         // secondary: "#5865f2",
+        lightBGPink:"#FAF5F6",
+        darkPink:"#F4EEEE",
         lobobgColor1: "#63AEED",
         lobobgColor2: "#86C1F3",
         trustgreen: "#038E60",

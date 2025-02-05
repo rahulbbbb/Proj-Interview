@@ -56,7 +56,7 @@ export const RightDrawer = ({
           open ? "slideIn" : "slideOut"
         } ${isLoading ? "hidden" : "visible"}`}
       >
-        <div className="flex items-center justify-between gap-4 py-3 md:py-5 px-5 md:px-8 bg-gray-p-150 border-b border-gray-p-350">
+        <div className="flex items-center justify-between gap-4 py-3 md:py-5 px-5 md:px-8 bg-lightBGPink border-b border-darkPink">
           <h3 className=" text-black-b-250 text-base md:text-xl font-medium">
             {header}
           </h3>
@@ -65,7 +65,7 @@ export const RightDrawer = ({
           </div>
         </div>
 
-        <div className="flex flex-col overflow-hidden h-full">{children}</div>
+        <div className="flex flex-col overflow-hidden h-full bg-gradient-to-b from-lightBGPink to-darkPink ">{children}</div>
       </div>
     </>
   );

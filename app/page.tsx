@@ -4,10 +4,11 @@ import SvgDataSearchComponent from "@/components/DataSearchSVG";
 import ListView from "@/components/ListView/ListView";
 import { Tabs } from "@/components/Tabs";
 import { TopNavigation } from "@/components/TopNavigation";
-import AddEvent from "@/components/AddEvent/AddEvent";
 import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import PatientList from "@/components/PatientList/page";
+import { Provider } from "react-redux";
+import { store } from "@/stores";
 
 interface Event {
   photo: string;
@@ -21,24 +22,25 @@ interface Event {
 export default function Home() {
   const [editUnitNumber, setEditUnitNumber] = useState(false);
   const [activeTab, setActiveTab] = useState<number>(0);
-  const [events, setEvents] = useState<Event[]>([]);
+  const [patientData, setPatientDate] = useState<Event[]>([]);
 
   useEffect(() => {
-    const storedData = localStorage.getItem("eventFormData");
+    const storedData = localStorage.getItem("patientData");
     if (storedData) {
-      setEvents(JSON.parse(storedData));
+      setPatientDate(JSON.parse(storedData));
     }
   }, []);
 
   const handleDelete = () => {
-    localStorage.removeItem("eventFormData");
-    setEvents([]);
+    localStorage.removeItem("patientData");
+    setPatientDate([]);
   };
 
   return (
     <>
+      <Provider store={store}>
      <div className='flex h-screen w-full overflow-y-hidden'>
-     <Sidebar />
+     {/* <Sidebar /> */}
       <div className="flex h-screen w-full flex-col ">
         <TopNavigation />
 
@@ -88,14 +90,13 @@ export default function Home() {
         </div>
       </div>
       </div>
+      </Provider>
 
-
-      {editUnitNumber && (
+      {/* {editUnitNumber && (
         <AddEvent
-          setEvents={setEvents}
-          hideModal={() => setEditUnitNumber(false)}
-        />
-      )}
+          // setEvents={setEvents}
+          hideModal={() => setEditUnitNumber(false)} setPatients={undefined}        />
+      )} */}
     </>
   );
 }

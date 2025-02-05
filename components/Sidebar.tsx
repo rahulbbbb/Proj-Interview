@@ -43,7 +43,8 @@ const Sidebar = (props) => {
         open ? "w-55" : "w-18"
       }`}
     >
-      {/* <Logo /> */}
+      <Logo />
+
 
       <div
         className="absolute -right-14 top-3 cursor-pointer z-20 w-9 h-9 rounded-md hidden mxl:flex border border-gray-o-300 bg-white hover:bg-gray-o-70 transition-all duration-150 justify-center items-center flex-col p-1.5 menu-btn"
@@ -133,12 +134,12 @@ const SideBarIcon = ({
   );
 };
 
-// const Logo = ({ link = "#", selected = false }) => (
-//   <div className={`sidebar-logo ${selected ? "sidebar-logo-selected" : ""}`}>
-//     <Link href={link}>
-//       <Image src={require("@/components/img/Logo.svg")} alt="Logo" />
-//     </Link>
-//   </div>
-// );
+const Logo = ({ link = "#", selected = false }) => (
+  <div className={`sidebar-logo ${selected ? "sidebar-logo-selected" : ""}`}>
+    <Link href={link}>
+    <Image src="/img/Logo.svg" alt="Logo" width={100} height={50} />
+    </Link>
+  </div>
+);
 
 export default Sidebar;
