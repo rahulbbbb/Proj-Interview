@@ -4,8 +4,6 @@ import { TopNavigation } from "@/components/TopNavigation";
 import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import PatientList from "@/components/PatientList/page";
-import { Provider } from "react-redux";
-import { store } from "@/stores";
 
 interface Event {
   photo: string;
@@ -47,7 +45,6 @@ export default function Home() {
 
   return (
     <>
-      <Provider store={store}>
         <div className="flex h-screen w-full overflow-y-hidden">
           {!isMobile && <Sidebar />}
           <div className="flex h-screen w-full flex-col ">
@@ -60,7 +57,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </Provider>
     </>
   );
 }

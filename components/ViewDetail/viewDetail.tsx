@@ -33,17 +33,21 @@ const ViewDetail = ({ data, onClose }) => {
             </p>
           </div>
           {data?.link && (
-            <div className="mt-6 w-full flex items-center justify-center bg-white rounded-lg p-1">
-              <span className="mr-2">🔗</span>
-              <a
-                href={data.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 underline"
-              >
-                {data.link}
-              </a>
-            </div>
+            <>
+              <div className="mt-6 w-full flex items-center justify-center bg-white rounded-lg p-1">
+                <div className="flex items-center w-full">
+                  <a
+                    href={data.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline truncate flex-1 max-w-full"
+                    title={data.link} 
+                  >
+                    {data.link}
+                  </a>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>

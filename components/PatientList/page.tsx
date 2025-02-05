@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "@/components/Table";
-import { usePopper } from "react-popper";
 import { MdCalendarMonth } from "react-icons/md";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { getFilterData, setFilterData } from "@/slices/filterSlice/filterSlice";
 import AddPatient from "../AddPatient/AddPatient";
-import { useDispatch, useSelector } from "react-redux";
 import DRCard from "@/components/DRCard/page";
 import ViewDetail from "../ViewDetail/viewDetail";
 
@@ -21,8 +18,6 @@ const PatientList = () => {
   const [patientData, setPatientData] = useState([]);
   const [rowData, setRowData] = useState({});
   const [scheduled, setScheduled] = useState<boolean>(false);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const storedData = localStorage.getItem("patientData");
@@ -80,9 +75,7 @@ const PatientList = () => {
             ? `${row.original.sessionDate} ${row.original.sessionTime}`
             : "-";
         },
-      },
-
-      {
+      },      {
         header: "",
         accessorKey: "numberOfPages",
         cell: ({ row }) => {
@@ -90,100 +83,52 @@ const PatientList = () => {
             setRowData(row.original);
           };
 
-          const viewRef = useRef(null);
-          const calendarRef = useRef(null);
           const [viewTooltipVisible, setViewTooltipVisible] = useState(false);
           const [calendarTooltipVisible, setCalendarTooltipVisible] =
             useState(false);
 
-          const [viewPopperElement, setViewPopperElement] = useState(null);
-          const [calendarPopperElement, setCalendarPopperElement] =
-            useState(null);
-
-          const { styles: editStyles, attributes: editAttributes } = usePopper(
-            viewRef.current,
-            viewPopperElement,
-            {
-              placement: "bottom",
-              modifiers: [
-                {
-                  name: "offset",
-                  options: {
-                    offset: [0, 8],
-                  },
-                },
-              ],
-            }
-          );
-
-          const { styles: calendarStyles, attributes: calendarAttributes } =
-            usePopper(calendarRef.current, calendarPopperElement, {
-              placement: "bottom",
-              modifiers: [
-                {
-                  name: "offset",
-                  options: {
-                    offset: [0, 8],
-                  },
-                },
-              ],
-            });
-
           return (
             <div className="flex justify-center items-center">
-            {row.original.status === "Pending" ? (
-              <div
-                ref={calendarRef}
-                className="relative cursor-pointer"
-                onMouseEnter={() => setCalendarTooltipVisible(true)}
-                onMouseLeave={() => setCalendarTooltipVisible(false)}
-              >
-                <MdCalendarMonth
-                  style={{ fontSize: "22px" }}
-                  onClick={() => {
-                    handleSummary();
-                    setScheduled(true);
-                  }}
-                />
-                {calendarTooltipVisible && (
-                  <div
-                    ref={setCalendarPopperElement}
-                    style={calendarStyles.popper}
-                    {...calendarAttributes.popper}
-                    className="bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg z-20"
-                  >
-                    Schedule
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div
-                ref={viewRef}
-                className="relative cursor-pointer"
-                onMouseEnter={() => setViewTooltipVisible(true)}
-                onMouseLeave={() => setViewTooltipVisible(false)}
-              >
-                <MdOutlineRemoveRedEye
-                  style={{ fontSize: "22px" }}
-                  onClick={() => {
-                    handleSummary();
-                    setView(true);
-                  }}
-                />
-                {viewTooltipVisible && (
-                  <div
-                    ref={setViewPopperElement}
-                    style={editStyles.popper}
-                    {...editAttributes.popper}
-                    className="bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg z-20"
-                  >
-                    View
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          
+              {row.original.status === "Pending" ? (
+                <div
+                  className="relative cursor-pointer"
+                  onMouseEnter={() => setCalendarTooltipVisible(true)}
+                  onMouseLeave={() => setCalendarTooltipVisible(false)}
+                >
+                  <MdCalendarMonth
+                    style={{ fontSize: "22px" }}
+                    onClick={() => {
+                      handleSummary();
+                      setScheduled(true);
+                    }}
+                  />
+                  {calendarTooltipVisible && (
+                    <div className="absolute z-20 bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg bottom-8 left-1/2 transform -translate-x-1/2">
+                      Schedule
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div
+                  className="relative cursor-pointer"
+                  onMouseEnter={() => setViewTooltipVisible(true)}
+                  onMouseLeave={() => setViewTooltipVisible(false)}
+                >
+                  <MdOutlineRemoveRedEye
+                    style={{ fontSize: "22px" }}
+                    onClick={() => {
+                      handleSummary();
+                      setView(true);
+                    }}
+                  />
+                  {viewTooltipVisible && (
+                    <div className="absolute z-20 bg-gray-600 text-white text-xs px-2 py-1 rounded-md shadow-lg bottom-8 left-1/2 transform -translate-x-1/2">
+                      View
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           );
         },
       },
@@ -237,7 +182,6 @@ const PatientList = () => {
   return (
     <>
       <div className="relative">
-
         {scheduled ? (
           <DRCard
             setScheduled={setScheduled}
@@ -251,15 +195,6 @@ const PatientList = () => {
             isFilter={true}
             isSearch
             dateProps={{ start: startDate, end: endDate }}
-            onFilterReset={() => {
-              setDate({ startDate: "", endDate: "" });
-              dispatch(
-                setFilterData({
-                  data: {},
-                  filterData: undefined,
-                })
-              );
-            }}
             isAddNewBtn
             handleAddNewBtnClick={() => handleAdd()}
             paginationShow
@@ -267,7 +202,6 @@ const PatientList = () => {
             isTitleName="Appointment List"
           />
         )}
-
         {view && <ViewDetail data={rowData} onClose={() => setView(false)} />}
       </div>
       {addPatient && (

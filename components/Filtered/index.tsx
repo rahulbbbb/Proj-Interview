@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import Slider from "rc-slider";
 import { Accordion } from "../Accordian";
 import clsx from "clsx";
 import { SearchIcon } from "@/components/Icons";
@@ -376,20 +375,7 @@ export const Filter = ({
                 className={clsx(!showSliderFilter && "hidden")}
               >
                 <div className="px-2">
-                  <Slider
-                    min={0}
-                    max={10_000}
-                    onChange={(number) =>
-                      handleSliderChange(number as number[])
-                    }
-                    value={sliderValue}
-                    range
-                    classNames={{
-                      track: "!bg-primary-o-550 !h-[10px]",
-                      handle: "!bg-primary-o-550",
-                      rail: "!bg-secondary-g-100 !h-[10px]",
-                    }}
-                  />
+             
 
                   <div className="flex items-center justify-center mt-3 gap-4">
                     <div className="relative">

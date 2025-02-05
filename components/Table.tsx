@@ -17,7 +17,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import ReactPaginate from "react-paginate";
 
 import {
   ArrowDown,
