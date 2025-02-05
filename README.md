@@ -1,16 +1,17 @@
 
 
-## Event Creation and View Project
+## Ekyamm Project of appointment scheduling
 
-Allows users to create events with details like title, date, location, and description. Users can upload media (image or video),  and previewed on the form. All event data is stored locally in the browser using local storage. The app also features a scrollable event listing, displaying event titles, dates, and media thumbnails.
+Allows users to helps in tracking and managing the appointments for each patient with specific doctors, including session details .
 
 ## Components
 
-### AddEvent - Form file to add events
-### ListView - for list view of events
+### AddPatient - Form file to add patients
+### ListView - VIew of Doctors list
 ### CommonComponent - SuccessModal, Formbody, Drawer for form Icons
 ### TopNavigation 
-### Tabs
+### SideNavigation
+### Search Bar
 
 ![image](https://github.com/user-attachments/assets/ffaf5ed9-ddfb-414d-9a3d-b211ca82d5c6)
 
