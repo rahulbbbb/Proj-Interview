@@ -1,0 +1,45 @@
+[
+    {
+      "name": "John Doe",
+      "mobileNumber": "+1234567890",
+      "whatsappNumber": "+1234567890",
+      "email": "johndoe@email.com",
+      "address": "123 Main St, Springfield, IL, 62701",
+      "status":"Scheduled"
+    },
+    {
+      "name": "Jane Smith",
+      "mobileNumber": "+1987654321",
+      "whatsappNumber": "+1987654321",
+      "email": "janesmith@email.com",
+      "address": "456 Elm St, Rivertown, TX, 75001",
+      "status":"Ongoing"
+
+    },
+    {
+      "name": "David Johnson",
+      "mobileNumber": "+1122334455",
+      "whatsappNumber": "+1122334455",
+      "email": "david.johnson@email.com",
+      "address": "789 Pine Ave, Lakeside, FL, 32123",
+      "status":"Completed" 
+
+    },
+    {
+      "name": "Emily Brown",
+      "mobileNumber": "+1444556677",
+      "whatsappNumber": "+1444556677",
+      "email": "emily.brown@email.com",
+      "address": "101 Maple Rd, Greenfield, WI, 53201",
+      "status":"Pending" 
+
+    },
+    {
+      "name": "Michael Green",
+      "mobileNumber": "+1555667788",
+      "whatsappNumber": "+1555667788",
+      "email": "michael.green@email.com",
+      "address": "202 Oak Dr, Clearwater, FL, 33755"
+    }
+  ]
+  
