@@ -103,6 +103,7 @@ export default function ScheduledSession({
               sessionDate: values.sessionDate,
               sessionFee: doctorData.sessionFee,
               sessionMode: values.sessionMode,
+              link:values.link,
               status: "Scheduled",
             };
           }

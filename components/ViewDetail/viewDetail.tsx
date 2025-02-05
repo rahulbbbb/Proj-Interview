@@ -13,9 +13,8 @@ const ViewDetail = ({ data, onClose }) => {
       onClick={handleOverlayClick}
     >
       <div className="relative bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl shadow-2xl p-4 w-full max-w-md text-white">
-
         <h1 className="text-3xl font-extrabold text-center tracking-wide drop-shadow-md mb-4">
-         {data.doctorName}
+          {data.doctorName}
         </h1>
 
         <div className="p-6 bg-white bg-opacity-20 rounded-xl shadow-md text-lg">
@@ -33,15 +32,20 @@ const ViewDetail = ({ data, onClose }) => {
               <span className="font-semibold">💰</span> {data.sessionFee}
             </p>
           </div>
+          {data?.link && (
+            <div className="mt-6 w-full flex items-center justify-center bg-white rounded-lg p-1">
+              <span className="mr-2">🔗</span>
+              <a
+                href={data.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                {data.link}
+              </a>
+            </div>
+          )}
         </div>
-
-        {data.notes && (
-          <div className="mt-6 p-4 bg-white bg-opacity-20 rounded-lg shadow-md">
-            <p className="text-white text-base font-light tracking-wide">
-              {data.notes}
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );

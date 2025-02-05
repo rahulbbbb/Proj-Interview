@@ -48,6 +48,7 @@ export default function AddPatient({ hideModal, setPatientData }) {
       sessionDate: "", 
       sessionMode:"",
       sessionFee:"",
+      link:""
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -64,6 +65,7 @@ export default function AddPatient({ hideModal, setPatientData }) {
         sessionDate: values.sessionDate, 
         sessionFee: values.sessionFee, 
         sessionMode: values.sessionMode, 
+        link:values.link
       };
   
       try {
