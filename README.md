@@ -15,6 +15,22 @@ Allows users to helps in tracking and managing the appointments for each patient
 
 
 
+
+### session scheduling form
+![image](https://github.com/user-attachments/assets/489308da-eec9-4220-b72c-dbb9a0cce162)
+
+![image](https://github.com/user-attachments/assets/5f4b2d4e-726e-4bb2-aaa2-642839b84657)
+
+
+
+### Responsive
+![image](https://github.com/user-attachments/assets/8f02b144-4177-4625-8b9a-1fcd18ef86d3)
+
+
+![image](https://github.com/user-attachments/assets/bb97c056-8c73-4952-b0ea-51e3db8b42c7)
+
+
+
 ![image](https://github.com/user-attachments/assets/1d1e9f97-3a49-465f-a113-08d098441b1a)
 
 
@@ -33,18 +49,7 @@ Allows users to helps in tracking and managing the appointments for each patient
 ### Available Doctors
 ![image](https://github.com/user-attachments/assets/cf6ebd07-8183-4d57-93da-af86b786e727)
 
-### session scheduling form
-![image](https://github.com/user-attachments/assets/489308da-eec9-4220-b72c-dbb9a0cce162)
 
-![image](https://github.com/user-attachments/assets/5f4b2d4e-726e-4bb2-aaa2-642839b84657)
-
-
-
-### Responsive
-![image](https://github.com/user-attachments/assets/8f02b144-4177-4625-8b9a-1fcd18ef86d3)
-
-
-![image](https://github.com/user-attachments/assets/bb97c056-8c73-4952-b0ea-51e3db8b42c7)
 
 
 
@@ -58,4 +63,4 @@ Allows users to helps in tracking and managing the appointments for each patient
 
 # Deploy on Vercel
 
-(https://proj-1-m-ptec.vercel.app/)
+(https://proj-1-m-t1zv.vercel.app/)
