@@ -34,12 +34,18 @@ Allows users to helps in tracking and managing the appointments for each patient
 ![image](https://github.com/user-attachments/assets/cf6ebd07-8183-4d57-93da-af86b786e727)
 
 ### session scheduling form
-![image](https://github.com/user-attachments/assets/fad91fb5-765b-4db5-bfae-94ae59000d87)
+![image](https://github.com/user-attachments/assets/489308da-eec9-4220-b72c-dbb9a0cce162)
+
+![image](https://github.com/user-attachments/assets/5f4b2d4e-726e-4bb2-aaa2-642839b84657)
+
+
 
 ### Responsive
-![image](https://github.com/user-attachments/assets/fa33d687-3d52-4052-a584-c82a131ca04e)
+![image](https://github.com/user-attachments/assets/8f02b144-4177-4625-8b9a-1fcd18ef86d3)
 
-![image](https://github.com/user-attachments/assets/b59ff6ce-eba4-47ca-83b6-04a64539dbea)
+
+![image](https://github.com/user-attachments/assets/bb97c056-8c73-4952-b0ea-51e3db8b42c7)
+
 
 
 
