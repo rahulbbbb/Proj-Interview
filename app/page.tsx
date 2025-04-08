@@ -56,7 +56,7 @@ export default function Home() {
       <div className="w-full mb-4 mt-4 flex justify-between px-6 flex-none"></div>
 
       <div className="flex-1 overflow-y-auto">
-        <PatientList />
+        {/* <PatientList /> */}
       </div>
     </div>
   </div>

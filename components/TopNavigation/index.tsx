@@ -1,25 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import {
-  CalenderIcon,
+  QueIcon,
   NotificationIcon,
   SettingIcon,
+  TranslateIcon,
+  Icon1,
+  SearchIcon,
 } from "@/components/Icons";
 import { IoIosArrowForward } from "react-icons/io";
 
 interface navigationProps {
   className?: string;
   handleSettingClick?: () => void;
-  handleAlertClick?: () => void;
-  handleCalenderClick?: () => void;
   onToggleSidebar?: () => void;
 }
 
 export const TopNavigation = ({
   className = "",
   handleSettingClick,
-  handleAlertClick,
-  handleCalenderClick,
   onToggleSidebar,
 }: navigationProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -60,7 +59,6 @@ export const TopNavigation = ({
       </div>
     </div>
   );
-  
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -106,37 +104,23 @@ export const TopNavigation = ({
           </div>
           <div className="flex items-center gap-4 md:gap-8 rightMenu">
             <div className="flex items-center rightmainMenu">
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <SearchIcon />
+                </span>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="pl-10 pr-4 py-2 bg-[#FCFCFC] rounded-md border border-[#00000019] focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder:text-[#6A6E72]"
+                />
+              </div>
               {
                 <div className="flex items-center gap-1 rightMenuIcons border-r border-gray-o-300 h-9 px-4">
-                  <div
-                    className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100"
-                    onClick={() => handleCalenderClick?.()}
-                  >
-                    <CalenderIcon />
-                    <span
-                      className="
-               absolute top-8 left-1/2 -translate-x-1/2
-               bg-gray-800 text-white text-xs 
-               px-2 py-1 rounded-md
-               invisible group-hover:visible
-               transition-opacity duration-200
-               whitespace-nowrap
-               z-50
-               before:content-[''] before:absolute before:-top-2 before:left-1/2
-               before:-translate-x-1/2 before:border-4 before:border-transparent
-               before:border-b-gray-800
-             "
-                    >
-                      Calendar
-                    </span>
-                  </div>
-
-                  <div
-                    className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100"
-                    onClick={() => handleAlertClick?.()}
-                  >
+                  <div className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100">
                     <NotificationIcon />
-                    <div className="w-1.5 h-1.5 bg-[#FF4D4D] rounded-full absolute top-2 right-1"></div>
+                    <div className="absolute top-1 -right-1 bg-blue-600 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full leading-none shadow-md">
+                      2
+                    </div>
                     <span
                       className="
                absolute top-8 left-1/2 -translate-x-1/2
@@ -154,7 +138,9 @@ export const TopNavigation = ({
                       Notifications
                     </span>
                   </div>
-
+                  <div className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100">
+                    <TranslateIcon />
+                  </div>
                   <div
                     className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100"
                     onClick={() => handleSettingClick?.()}
@@ -176,6 +162,12 @@ export const TopNavigation = ({
                     >
                       Settings
                     </span>
+                  </div>
+                  <div className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100">
+                    <QueIcon />
+                  </div>
+                  <div className="group relative cursor-pointer p-2 rounded-md hover:bg-gray-p-100">
+                    <Icon1 />
                   </div>
                 </div>
               }

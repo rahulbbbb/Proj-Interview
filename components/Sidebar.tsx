@@ -37,7 +37,7 @@ const Sidebar = ({ open, setOpen }) => {
     >
       <Logo open={open} />
 
-      <div className="flex flex-col gap-2 menuwrap">
+      <div className="flex flex-col gap-2 ">
         <SideBarIcon
           icon={<HomeIcon />}
           title={open && "Dashboard"}
@@ -65,7 +65,7 @@ const Sidebar = ({ open, setOpen }) => {
               // selected={
               //   itm && itm.href === "/Home/CoreSetup/LegalEntityAddressMapping"
               // }
-              className={""}
+              className={"mb-2"}
             />
           </div>
         )}
