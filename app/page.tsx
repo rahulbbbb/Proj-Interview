@@ -17,6 +17,7 @@ interface Event {
 export default function Home() {
   const [patientData, setPatientDate] = useState<Event[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,18 +46,22 @@ export default function Home() {
 
   return (
     <>
-        <div className="flex h-screen w-full overflow-y-hidden">
-          {!isMobile && <Sidebar />}
-          <div className="flex h-screen w-full flex-col ">
-            <TopNavigation />
+        <div className="flex h-screen w-full flex-col overflow-hidden">
+        <TopNavigation onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
 
-            <div className="w-full mb-4 mt-4 flex justify-between px-6 flex-none"></div>
+  <div className="flex flex-1 overflow-hidden">
+    {!isMobile && <Sidebar open={isSidebarOpen} setOpen={setIsSidebarOpen} />}
 
-            <div className="flex-1">
-              <PatientList />
-            </div>
-          </div>
-        </div>
+    <div className="flex w-full flex-col">
+      <div className="w-full mb-4 mt-4 flex justify-between px-6 flex-none"></div>
+
+      <div className="flex-1 overflow-y-auto">
+        <PatientList />
+      </div>
+    </div>
+  </div>
+</div>
+
     </>
   );
 }

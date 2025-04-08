@@ -162,7 +162,7 @@ hr {
     @apply mx-2 bg-gray-200 border border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-800;
   }
   .top-navigation {
-    @apply flex flex-row items-center justify-between mxl:justify-end w-full px-5 lg:pl-8 lg:pr-5 py-3 m-0 z-30 bg-[#f7f7fe] border-b border-gray-p-350;
+    @apply flex flex-row items-center justify-between mxl:justify-end w-full px-5 lg:pl-8 lg:pr-5 py-3 m-0 z-30 bg-[#ffffff] border-b border-gray-p-350;
   }
 
   .top-navigation-icon {
