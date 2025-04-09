@@ -13,6 +13,7 @@ module.exports = {
         18: "68px",
         55: "240px",
       },
+      
       screens: {
         mxl: "992px",
       },
@@ -86,6 +87,8 @@ module.exports = {
         lato: ["Lato", "sans-serif"],
         outfit: ["Outfit", "system-ui"],
         karla: ["Karla", "sans-serif"],
+        din: ['DIN1451Mittelschrift', 'sans-serif'],
+      
       },
       colors: {
         primary: "#202225",

@@ -111,7 +111,7 @@ export const TopNavigation = ({
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="pl-10 pr-4 py-2 bg-[#FCFCFC] rounded-md border border-[#00000019] focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder:text-[#6A6E72]"
+                  className="pl-10 pr-4 py-2 bg-[#FCFCFC] rounded-md border border-[#00000019] focus:outline-none  text-sm placeholder:text-[#6A6E72]"
                 />
               </div>
               {
